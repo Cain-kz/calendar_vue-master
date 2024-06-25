@@ -1,0 +1,241 @@
+
+
+// ===========================================>基础配置<===================================
+
+//radius
+$radius:30px;
+//初始头部背景色
+$color-cherry: #ef4142;
+//初始身体背景色
+$back-color: #F2F2F2;
+
+// ===========================================>遍历<=======================================
+
+$flex-jc: (
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	between: space-between,
+	around: space-around,
+	evenly: space-evenly,
+);
+.flex-w{
+	flex-wrap: wrap;
+}
+.flex-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+$flex-ai: (
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	stretch: stretch,
+);
+// 颜色
+$colors: (
+	"primary": #db9e3f,
+	"yellow":#ffde00,
+	"info-1": #B4EDF6,
+	
+	"info": #4b67af,
+	"white": #ffffff,
+	"light": #eeeeeef5,
+	"grey-1": #9f9f9f,
+	"grey": #666666,
+	"dark-3": #666,
+	"dark-1": #5f5f5f,
+	"dark": #222222,
+	"black-1": #171823,
+	"black-2": #333,
+
+	"black": #000000,
+	"green": rgb(92, 217, 232),
+	"red": rgb(207, 92, 84),
+	"red-2": #ef4142,
+	"green-1":#7ADE66,
+	"green-2":#4cc086,
+	"cherry":rgb(216, 65, 65),
+	"spark": $color-cherry,
+	"morning": #40c057,
+	"afternoon": #f39d17,
+	"night": #3a5488,
+	
+);
+// 字体大小
+$base-font-size: 3rem;
+$font-sizes: (
+	xxxs: 0.05,
+	xxs: 0.1,
+	xs: 0.125,
+	sm: 0.1325,
+	md: 0.1625,
+	lg: 0.175,
+	xl: 0.2,
+	xxl: 0.225,
+	xxxl: 0.23, //12px
+	icon1: 0.5,
+	icon2: 0.35,
+	icon3: 0.3,
+	icon4: 0.4,
+	xxxxl: 0.3,
+	hl_s: 0.30,
+	hl_: 0.33,
+	hl: 0.35,
+	cover: 1
+);
+//超级标准的字体大小
+$font-sizes2: (
+	12: 0.23, //12px
+	30:	0.57,//30px
+);
+$width: (
+    5: 5%,
+    10: 10%,
+	15: 15%,
+    20: 20%,
+    25: 25%,
+    30: 30%,
+	33: 33%,
+    35: 35%,
+    40: 40%,
+    50: 50%,
+    60: 60%,
+    65: 65%,
+    70: 70%,
+    75: 75%,
+    80: 80%,
+	85: 85%,
+    90: 90%,
+	95: 95%,
+    100: 100%,
+	foamBox: 0.5rem,
+	cell3: 33%,
+	big-foamBox: 2rem
+);
+$height: (
+    8: 8%,
+	5: 5%,
+    10: 10%,
+    15: 15%,
+    20: 20%,
+	25: 22%,
+	25_: 25%,
+    30: 30%,
+    40: 40%,
+    50: 50%,
+    60: 60%,
+    70: 70%,
+    80: 80%,
+	85: 85%,
+    90: 90%,
+    92: 92%,
+    100: 100%,
+	footer: 1.3rem,
+	title: 1rem,
+	title2: 1.5rem,
+	tab: 1.1rem
+);
+$direction: (
+  	column: column,
+	row: row,
+	RR: row-reverse,
+	CR: column-reverse
+);
+$position: (
+	relative: relative,
+	absolute: absolute
+);
+// 颜色
+@each $colorkey, $color in $colors {
+	.text-#{$colorkey} {
+		color: $color;
+	}
+
+	.bg-#{$colorkey} {
+		background-color: $color;
+	}
+}
+// 字体
+@each $fontkey, $fontvalue in $font-sizes {
+	.fs-#{$fontkey} {
+		font-size: $fontvalue * $base-font-size;
+	}
+}
+
+@each $fontkey, $fontvalue in $font-sizes2 {
+	.fs2-#{$fontkey} {
+		font-size: $fontvalue * $base-font-size;
+	}
+}
+// flex
+@each $key, $value in $flex-jc {
+	.jc-#{$key} {
+		justify-content: $value;
+	}
+}
+@each $key, $value in $flex-ai {
+	.ai-#{$key} {
+		align-items: $value;
+  	}
+}
+@each $key, $value in $direction {
+	.direction-#{$key} {
+		flex-direction: $value;
+  	}
+}
+// width
+@each $key, $widthv in $width {
+	.w-#{$key} {
+		width: $widthv;
+	}
+}
+// hreight
+@each $key, $heightv in $height {
+	.h-#{$key} {
+		height: $heightv;
+	}
+}
+// position
+@each $key, $value in $position {
+	.position-#{$key} {
+		position: $value;
+	}
+}
+
+
+// ===========================================>动态<===================================
+@mixin sl-width($width) {
+    width: $width;
+}
+@mixin sl-height($height) {
+    height: $height;
+}
+@mixin sl-margin($margin...) {
+    margin: $margin;
+}
+@mixin sl-padding($padding...) {
+    padding: $padding;
+}
+@mixin sl-fontSize($fontSize) {
+    font-size: $fontSize;
+}
+@mixin sl-fontWeight($fontWeight) {
+    font-weight: $fontWeight;
+}
+@mixin sl-position($position) {
+    position: $position;
+}
+@mixin sl-top($top) {
+    top: $top;
+}
+@mixin sl-right($right) {
+    right: $right;
+}
+@mixin sl-bottom($bottom) {
+    bottom: $bottom;
+}
+@mixin sl-left($left) {
+    left: $left;
+}
